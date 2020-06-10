@@ -12,7 +12,7 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            return render(request, 'products/index.html')
+            return redirect('index')
         else:
             context = {
                 'error': 'Invalid Credentials'
@@ -23,7 +23,7 @@ def login(request):
 def logout(request):
     if request.method == 'POST':
         auth.logout(request)
-    return render(request, 'products/index.html')
+        return redirect('index')
 
 def signup(request):
     if request.method == 'POST':

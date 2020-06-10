@@ -5,7 +5,7 @@ from datetime import datetime
 from products import models
 # Create your views here.
 def index(request):
-    products = models.Product.objects.all()
+    products = models.Product.objects.order_by('pub_date')
     context = {
         'products': products
     }
