@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
 
@@ -19,5 +19,12 @@ def create(request):
         product.image = request.FILES['product_image']
         product.hunter = request.user
         product.save()
-        return redirect('index')
+        return redirect('/products/'+ str(product.id))
     return render(request, 'products/create.html')
+
+def detail(request, product_id):
+    product = get_object_or_404(models.Product, pk=product_id)
+    context = {
+        'product': product
+    }
+    return render(request, 'products/detail.html', context)
