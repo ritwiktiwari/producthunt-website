@@ -1,7 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% for product in products %}
 
-Hello this is a home page
+<div class="row">
+    <div class="col-2">
+        <img src="{{ product.icon.url }}" class="img-fluid">
+    </div>
+    <div class="col-6">
+        <h4>{{ product.title }}</h4>
+        <p>{{ product.body }}</p>
+    </div>
+    <div class="col-4">
+        <a href=""><button class="btn btn-primary btn-lg btn-block">Upvote {{ product.votes_total }}</button></a>
+    </div>
+</div>
+{% endfor %}
 
 {% endblock %}

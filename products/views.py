@@ -5,7 +5,11 @@ from datetime import datetime
 from products import models
 # Create your views here.
 def index(request):
-    return render(request, 'products/index.html')
+    products = models.Product.objects.all()
+    context = {
+        'products': products
+    }
+    return render(request, 'products/index.html', context)
 
 @login_required
 def create(request):
