@@ -3,11 +3,11 @@
 {% block content %}
 {% for product in products %}
 
-<div class="row">
-    <div class="col-2">
+<div class="row pt-3">
+    <div class="col-2" onclick="window.location='/products/{{ product.id }}';" style="cursor: pointer">
         <img src="{{ product.icon.url }}" class="img-fluid">
     </div>
-    <div class="col-6">
+    <div class="col-6" onclick="window.location='/products/{{ product.id }}';" style="cursor: pointer">
         <h4>{{ product.title }}</h4>
         <p>{{ product.body }}</p>
     </div>
